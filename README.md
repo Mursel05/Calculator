@@ -19,4 +19,4 @@ Division (/): Divide one number by another.
 Error Handling: The calculator handles common errors like division by zero and invalid input gracefully.
 
 
-![image](https://github.com/Mursel05/Calculator/assets/134983247/77a61dab-0f98-42e0-9bac-ff26fe97f84f)
+![image](https://github.com/Mursel05/Calculator/assets/134983247/6ef3ec6c-738c-418d-9ad0-8f56e92989ff)
