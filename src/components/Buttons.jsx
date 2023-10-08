@@ -7,7 +7,7 @@ const Buttons = ({ onSetNumber, onSetShowAnswer }) => {
     );
   }
   function deleteItem() {
-    onSetNumber((number) => number.slice(0, -1));
+    onSetNumber((number) => (number[0] == 0 ? [0] : number.slice(0, -1)));
   }
   function deleteNumber() {
     onSetShowAnswer(false);
