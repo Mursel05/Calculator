@@ -5,7 +5,7 @@ Use this link to visit the page: https://calculator-mursel05.vercel.app/
 
 This calculator project is a simple command-line calculator application written in React. It can perform basic arithmetic operations such as addition, subtraction, multiplication, and division. The calculator is designed to be user-friendly and easy to use, making it a helpful tool for performing quick calculations.
 
-##Features
+**Features
 
 
 Addition (+): Add two numbers together.
