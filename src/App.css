@@ -38,7 +38,8 @@ body {
   gap: 10px;
 }
 p {
-  direction: rtl;overflow: hidden;
+  text-align: end;
+  overflow: hidden;
 }
 .answer {
   font-size: 20px;
@@ -74,4 +75,59 @@ p {
   width: 370px;
   display: flex;
   justify-content: space-between;
+}
+.logo {
+  align-self: flex-end;
+}
+.mode {
+  display: flex;
+  gap: 15px;
+}
+.mode span {
+  font-size: 13px;
+  align-self: flex-end;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+.mode-btn {
+  display: flex;
+  flex-direction: column;
+}
+.mode-number {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 4px;
+}
+.mode-number span {
+  font-size: 13px;
+  cursor: pointer;
+}
+.mode-slider {
+  width: 50px;
+  height: 20px;
+  border-radius: 9px;
+  background-color: hsl(223, 31%, 20%);
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  position: relative;
+  cursor: pointer;
+}
+.mode-part {
+  width: 16px;
+  height: 20px;
+}
+.mode-parts {
+  border-radius: 9px;
+  position: absolute;
+  display: flex;
+}
+.mode-circle {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: hsl(6, 63%, 50%);
+  cursor: pointer;
+  transition: all 0.1s linear;
 }

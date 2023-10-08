@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 
 const Buttons = ({ onSetNumber, onSetShowAnswer }) => {
   function addItem(item) {
-    onSetNumber((number) => (number[0] == 0 ? [item] : [...number, item]));
+    onSetNumber((number) =>
+      number[0] == 0 ? [item] : number.length > 16 ? number : [...number, item]
+    );
   }
   function deleteItem() {
     onSetNumber((number) => number.slice(0, -1));

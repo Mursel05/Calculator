@@ -22,7 +22,7 @@ const Screen = ({ number, showAnswer, onSetShowAnswer, onSetNumber }) => {
       ) {
         return "Infinity";
       } else if (typeof newNumber.slice(-1)[0] === "string") {
-        return answer;
+        return eval(newNumber.slice(0, -1).join(""));
       } else {
         return eval(newNumber.join(""));
       }
@@ -30,7 +30,7 @@ const Screen = ({ number, showAnswer, onSetShowAnswer, onSetNumber }) => {
   }, [number]);
   useEffect(() => {
     if (showAnswer) {
-      onSetNumber([answer]);
+      onSetNumber(Array.from(String(answer), Number));
       onSetShowAnswer(false);
     }
   }, [showAnswer]);
