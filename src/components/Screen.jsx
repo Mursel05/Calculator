@@ -8,7 +8,11 @@ const Screen = ({ number, showAnswer, onSetShowAnswer, onSetNumber }) => {
       if (
         newNumber.some(
           (item, index) =>
-            typeof item === "string" && typeof newNumber[index + 1] === "string"
+            (typeof item === "string" &&
+              typeof newNumber[index + 1] === "string") ||
+            (typeof item === "string" &&
+              newNumber[index + 1] === 0 &&
+              typeof newNumber[index + 2] === "number")
         ) ||
         (typeof newNumber[0] === "string" &&
           newNumber[0] !== "-" &&
@@ -29,7 +33,7 @@ const Screen = ({ number, showAnswer, onSetShowAnswer, onSetNumber }) => {
     });
   }, [number]);
   useEffect(() => {
-    if (showAnswer) {
+    if (showAnswer && typeof answer === "number") {
       onSetNumber(Array.from(String(answer), Number));
       onSetShowAnswer(false);
     }
