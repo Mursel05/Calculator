@@ -28,6 +28,7 @@ const Screen = ({ number, showAnswer, onSetShowAnswer, onSetNumber }) => {
       } else if (typeof newNumber.slice(-1)[0] === "string") {
         return eval(newNumber.slice(0, -1).join(""));
       } else {
+        console.log(newNumber.join(""));
         return eval(newNumber.join(""));
       }
     });
@@ -37,9 +38,17 @@ const Screen = ({ number, showAnswer, onSetShowAnswer, onSetNumber }) => {
       if (answer < 0) {
         onSetNumber(Array.from(String(answer * -1), Number));
         onSetNumber((number) => ["-", ...number]);
+        onSetNumber((number) =>
+          number.map((item) =>
+            isNaN(item) && item !== "-" ? (item = ".") : item
+          )
+        );
         onSetShowAnswer(false);
       } else {
         onSetNumber(Array.from(String(answer), Number));
+        onSetNumber((number) =>
+          number.map((item) => (isNaN(item) ? (item = ".") : item))
+        );
         onSetShowAnswer(false);
       }
     }
