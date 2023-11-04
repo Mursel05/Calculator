@@ -34,8 +34,14 @@ const Screen = ({ number, showAnswer, onSetShowAnswer, onSetNumber }) => {
   }, [number]);
   useEffect(() => {
     if (showAnswer && typeof answer === "number") {
-      onSetNumber(Array.from(String(answer), Number));
-      onSetShowAnswer(false);
+      if (answer < 0) {
+        onSetNumber(Array.from(String(answer * -1), Number));
+        onSetNumber((number) => ["-", ...number]);
+        onSetShowAnswer(false);
+      } else {
+        onSetNumber(Array.from(String(answer), Number));
+        onSetShowAnswer(false);
+      }
     }
   }, [showAnswer]);
   return (

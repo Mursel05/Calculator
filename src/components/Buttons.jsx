@@ -1,6 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
+
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+}
 
 const Buttons = ({ onSetNumber, onSetShowAnswer }) => {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  const { height, width } = windowDimensions;
   function addItem(item) {
     onSetNumber((number) =>
       number[0] === 0 && number.length === 1
@@ -61,64 +83,124 @@ const Buttons = ({ onSetNumber, onSetShowAnswer }) => {
       }
     });
   }, []);
-  return (
-    <div className="buttons">
-      <div className="btn" onClick={() => addItem(7)}>
-        <span>7</span>
+  if (width > 420)
+    return (
+      <div className="buttons">
+        <div className="btn" onClick={() => addItem(7)}>
+          <span>7</span>
+        </div>
+        <div className="btn" onClick={() => addItem(8)}>
+          <span>8</span>
+        </div>
+        <div className="btn" onClick={() => addItem(9)}>
+          <span>9</span>
+        </div>
+        <div className="btn remove" onClick={deleteItem}>
+          <span>DEL</span>
+        </div>
+        <div className="btn" onClick={() => addItem(4)}>
+          <span>4</span>
+        </div>
+        <div className="btn" onClick={() => addItem(5)}>
+          <span>5</span>
+        </div>
+        <div className="btn" onClick={() => addItem(6)}>
+          <span>6</span>
+        </div>
+        <div className="btn" onClick={() => addItem("+")}>
+          <span>+</span>
+        </div>
+        <div className="btn" onClick={() => addItem(1)}>
+          <span>1</span>
+        </div>
+        <div className="btn" onClick={() => addItem(2)}>
+          <span>2</span>
+        </div>
+        <div className="btn" onClick={() => addItem(3)}>
+          <span>3</span>
+        </div>
+        <div className="btn" onClick={() => addItem("-")}>
+          <span>-</span>
+        </div>
+        <div className="btn" onClick={() => addItem(".")}>
+          <span>.</span>
+        </div>
+        <div className="btn" onClick={() => addItem(0)}>
+          <span>0</span>
+        </div>
+        <div className="btn" onClick={() => addItem("/")}>
+          <span>/</span>
+        </div>
+        <div className="btn" onClick={() => addItem("x")}>
+          <span>x</span>
+        </div>
+        <div className="btn remove reset" onClick={deleteNumber}>
+          <span>RESET</span>
+        </div>
+        <div className="btn equal" onClick={() => onSetShowAnswer(true)}>
+          <span>=</span>
+        </div>
       </div>
-      <div className="btn" onClick={() => addItem(8)}>
-        <span>8</span>
+    );
+  if (width <= 420)
+    return (
+      <div className="buttons">
+        <div className="btn" onClick={() => addItem(7)}>
+          <span>7</span>
+        </div>
+        <div className="btn" onClick={() => addItem(8)}>
+          <span>8</span>
+        </div>
+        <div className="btn" onClick={() => addItem(9)}>
+          <span>9</span>
+        </div>
+        <div className="btn" onClick={() => addItem(4)}>
+          <span>4</span>
+        </div>
+        <div className="btn" onClick={() => addItem(5)}>
+          <span>5</span>
+        </div>
+        <div className="btn" onClick={() => addItem(6)}>
+          <span>6</span>
+        </div>
+        <div className="btn" onClick={() => addItem(1)}>
+          <span>1</span>
+        </div>
+        <div className="btn" onClick={() => addItem(2)}>
+          <span>2</span>
+        </div>
+        <div className="btn" onClick={() => addItem(3)}>
+          <span>3</span>
+        </div>
+        <div className="btn" onClick={() => addItem(".")}>
+          <span>.</span>
+        </div>
+        <div className="btn" onClick={() => addItem(0)}>
+          <span>0</span>
+        </div>
+        <div className="btn" onClick={() => addItem("/")}>
+          <span>/</span>
+        </div>
+        <div className="btn" onClick={() => addItem("+")}>
+          <span>+</span>
+        </div>
+        <div className="btn" onClick={() => addItem("-")}>
+          <span>-</span>
+        </div>
+        <div className="btn" onClick={() => addItem("x")}>
+          <span>x</span>
+        </div>
+        <div className="btn remove reset" onClick={deleteNumber}>
+          <span>RESET</span>
+        </div>
+        <div className="btn remove" onClick={deleteItem}>
+          <span>DEL</span>
+        </div>
+        <div className="btn equal" onClick={() => onSetShowAnswer(true)}>
+          <span>=</span>
+        </div>
       </div>
-      <div className="btn" onClick={() => addItem(9)}>
-        <span>9</span>
-      </div>
-      <div className="btn remove" onClick={deleteItem}>
-        <span>DEL</span>
-      </div>
-      <div className="btn" onClick={() => addItem(4)}>
-        <span>4</span>
-      </div>
-      <div className="btn" onClick={() => addItem(5)}>
-        <span>5</span>
-      </div>
-      <div className="btn" onClick={() => addItem(6)}>
-        <span>6</span>
-      </div>
-      <div className="btn" onClick={() => addItem("+")}>
-        <span>+</span>
-      </div>
-      <div className="btn" onClick={() => addItem(1)}>
-        <span>1</span>
-      </div>
-      <div className="btn" onClick={() => addItem(2)}>
-        <span>2</span>
-      </div>
-      <div className="btn" onClick={() => addItem(3)}>
-        <span>3</span>
-      </div>
-      <div className="btn" onClick={() => addItem("-")}>
-        <span>-</span>
-      </div>
-      <div className="btn" onClick={() => addItem(".")}>
-        <span>.</span>
-      </div>
-      <div className="btn" onClick={() => addItem(0)}>
-        <span>0</span>
-      </div>
-      <div className="btn" onClick={() => addItem("/")}>
-        <span>/</span>
-      </div>
-      <div className="btn" onClick={() => addItem("x")}>
-        <span>x</span>
-      </div>
-      <div className="btn remove reset" onClick={deleteNumber}>
-        <span>RESET</span>
-      </div>
-      <div className="btn equal" onClick={() => onSetShowAnswer(true)}>
-        <span>=</span>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Buttons;

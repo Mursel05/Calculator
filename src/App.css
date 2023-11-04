@@ -25,8 +25,8 @@ body {
   gap: 20px;
   padding: 20px;
   border-radius: 9px;
-  grid-row: 2/6;
 }
+
 .screen {
   background-color: hsl(224, 36%, 15%);
   border-radius: 9px;
@@ -130,4 +130,18 @@ p {
   background-color: hsl(6, 63%, 50%);
   cursor: pointer;
   transition: all 0.1s linear;
+}
+@media (max-width: 421px) {
+  .buttons {
+    grid-template-columns: 70px 70px 70px;
+  }
+  .screen {
+    width: 290px;
+  }
+  .reset,.equal{
+    grid-column: auto;
+  }
+  .reset span{
+    font-size: 20px;
+  }
 }
